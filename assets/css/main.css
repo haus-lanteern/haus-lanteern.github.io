@@ -1,0 +1,159 @@
+/** Sizes */
+/** Colors */
+/* General */
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+a {
+  text-decoration: none; }
+
+a:hover {
+  text-decoration: none; }
+
+img {
+  text-decoration: none;
+  border: none; }
+
+html, body {
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  color: #483e37;
+  margin: 0;
+  padding: 0; }
+
+body {
+  position: relative; }
+
+h1, h2, h3, h4 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  text-transform: uppercase; }
+
+p {
+  font-size: 20px;
+  font-weight: 300; }
+
+.mt20 {
+  margin-top: 20px; }
+
+.mb20 {
+  margin-bottom: 20px; }
+
+span.codedirection {
+  unicode-bidi: bidi-override;
+  direction: rtl; }
+
+/* Navbar */
+.navbar {
+  border: none;
+  box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0; }
+
+.active, .active:hover {
+  background: transparent; }
+
+.navbar-default .navbar-nav .active a, .navbar-default .navbar-nav .active a:hover {
+  color: #0088aa;
+  background: transparent; }
+
+.navbar-default {
+  height: 72px; }
+
+.navbar-brand {
+  padding-top: 0; }
+
+a.navbar-brand.logo {
+  color: transparent;
+  display: block;
+  background-size: cover; }
+
+a.navbar-brand.logo:hover, a.navbar-brand.logo:active {
+  color: transparent; }
+
+.logo {
+  margin-left: 15px; }
+
+@media (max-width: 767px) {
+  .logo {
+    width: 240px;
+    height: 60px;
+    background: url("../img/haus_lanteern_logo.png"); } }
+@media (min-width: 768px) {
+  .logo {
+    width: 60px;
+    height: 60px;
+    background: url("../img/haus_lanteern_icon.png"); }
+
+  .navbar-nav > li > a {
+    padding-left: 8px;
+    padding-right: 8px; } }
+@media (min-width: 992px) {
+  .navbar-nav > li > a {
+    padding-left: 12px;
+    padding-right: 12px; } }
+@media (min-width: 1200px) {
+  .logo {
+    width: 240px;
+    height: 60px;
+    background: url("../img/haus_lanteern_logo.png"); } }
+.navbar-nav {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  text-transform: uppercase;
+  padding-top: 13px; }
+
+.navbar-default .navbar-nav li a {
+  color: #483e37; }
+.navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav li a:focus, .navbar-default .navbar-nav li a:active {
+  color: #0088aa;
+  background: transparent; }
+
+.navbar-toggle {
+  margin-top: 20px; }
+
+.navbar-collapse {
+  background: #f9f9f9; }
+
+#willkommen {
+  height: 90vh; }
+  #willkommen .bg-image {
+    height: 90vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center center; }
+
+#ausstattung ul {
+  margin-left: 30px; }
+  #ausstattung ul li {
+    font-size: 20px;
+    font-weight: 300; }
+
+#gallery img {
+  margin-bottom: 4px; }
+
+#preise table {
+  font-size: 18px;
+  font-weight: 300; }
+  #preise table th {
+    font-weight: 400; }
+
+#footer {
+  box-shadow: inset 0 2px 2px 2px rgba(0, 0, 0, 0.3);
+  padding: 20px 0;
+  background: #483e37;
+  color: #808080; }
+  #footer p {
+    font-size: 16px; }
+  #footer a {
+    color: #808080; }
+  #footer a:hover {
+    color: #f9f9f9; }
+
+/*# sourceMappingURL=main.css.map */

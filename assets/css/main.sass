@@ -1,0 +1,172 @@
+/** Sizes **/
+$textFont: 'Roboto', sans-serif
+$headingFont: 'Roboto', sans-serif
+
+/** Colors **/
+$white: #fff
+$lightWhite: #f9f9f9
+$lightWhiteTrans: rgba(249, 249, 249, .95)
+$gray: #808080
+$teal: #0088aa
+$shadedTeal: #007b99
+$darkRed: #800000
+$darkBrown: #483e37
+
+/* General */
+*
+  margin: 0
+  padding: 0
+  -webkit-font-smoothing: antialiased
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+
+a
+  text-decoration: none
+
+a:hover
+  text-decoration: none
+
+img
+  text-decoration: none
+  border: none
+
+html, body
+  height: 100%
+  font-family: $textFont
+  font-size: 18px
+  color: $darkBrown
+  margin: 0
+  padding: 0
+
+body
+  position: relative
+
+h1, h2, h3, h4
+  font-family: $headingFont
+  font-weight: 300
+  text-transform: uppercase
+
+p
+  font-size: 20px
+  font-weight: 300
+
+.mt20
+  margin-top: 20px
+
+.mb20
+  margin-bottom: 20px
+
+span.codedirection
+  unicode-bidi: bidi-override
+  direction: rtl
+
+/* Navbar */
+.navbar
+  border: none
+  box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.1)
+  margin-bottom: 0
+
+.active, .active:hover
+  background: transparent
+
+.navbar-default .navbar-nav .active
+  a, a:hover
+    color: $teal
+    background: transparent
+
+.navbar-default
+  height: 72px
+
+.navbar-brand
+  padding-top: 0
+
+a.navbar-brand.logo
+  color: transparent
+  display: block
+  background-size: cover
+a.navbar-brand.logo:hover, a.navbar-brand.logo:active
+  color: transparent
+
+.logo
+  margin-left: 15px
+
+@media (max-width: 767px)
+  .logo
+    width: 240px
+    height: 60px
+    background: url('../img/haus_lanteern_logo.png')
+@media (min-width: 768px)
+  .logo
+    width: 60px
+    height: 60px
+    background: url('../img/haus_lanteern_icon.png')
+  .navbar-nav > li > a
+    padding-left: 8px
+    padding-right: 8px
+@media (min-width: 992px)
+  .navbar-nav > li > a
+    padding-left: 12px
+    padding-right: 12px
+@media (min-width: 1200px)
+  .logo
+    width: 240px
+    height: 60px
+    background: url('../img/haus_lanteern_logo.png')
+
+.navbar-nav
+  font-family: $headingFont
+  font-weight: 300
+  font-size: 16px
+  text-transform: uppercase
+  padding-top: 13px
+
+.navbar-default .navbar-nav li
+  a
+    color: $darkBrown
+  a:hover, a:focus, a:active
+    color: $teal
+    background: transparent
+
+.navbar-toggle
+  margin-top: 20px
+
+.navbar-collapse
+  background: $lightWhite
+
+#willkommen
+  height: 90vh
+  .bg-image
+    height: 90vh
+    width: 100%
+    background-size: cover
+    background-position: center center
+
+#ausstattung
+  ul
+    margin-left: 30px
+    li
+      font-size: 20px
+      font-weight: 300
+
+#gallery img
+  margin-bottom: 4px
+
+#preise
+  table
+    font-size: 18px
+    font-weight: 300
+    th
+      font-weight: 400
+
+#footer
+  box-shadow: inset 0 2px 2px 2px rgba(0, 0, 0, 0.3)
+  padding: 20px 0
+  background: $darkBrown
+  color: $gray
+  p
+    font-size: 16px
+  a
+    color: $gray
+  a:hover
+    color: $lightWhite
