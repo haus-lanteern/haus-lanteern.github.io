@@ -1,463 +1,633 @@
 <!DOCTYPE html>
 <html lang="de">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description"
-        content="Haus Lanteern auf Spiekeroog bietet Ihnen perfekte Erholung für Ihren nächsten Urlaub an der Nordsee." />
-    <meta name="keywords"
-        content="Haus Lanteern, Haus Lantern, Spiekeroog, Ferienhaus, Nordsee, Insel, Urlaub, Tranpad, Ostende, Dünen, Wandern, Watt, Sand, Strand, Meer, Familie, Erholung" />
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Haus Lanteern auf Spiekeroog bietet Ihnen perfekte Erholung für Ihren nächsten Urlaub an der Nordsee."
+    />
+    <meta
+      name="keywords"
+      content="Haus Lanteern, Haus Lantern, Spiekeroog, Ferienhaus, Nordsee, Insel, Urlaub, Tranpad, Ostende, Dünen, Wandern, Watt, Sand, Strand, Meer, Familie, Erholung"
+    />
     <meta name="robots" content="all" />
     <!--<link rel="icon" href="../../favicon.ico">-->
     <title>Haus Lanteern auf Spiekeroog</title>
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/wallop.css" rel="stylesheet">
-    <link href="assets/css/wallop--fade.css" rel="stylesheet">
-    <link href="assets/css/blueimp-gallery.min.css" rel="stylesheet">
-    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/wallop.css" rel="stylesheet" />
+    <link href="assets/css/wallop--fade.css" rel="stylesheet" />
+    <link href="assets/css/blueimp-gallery.min.css" rel="stylesheet" />
+    <link href="assets/css/main.css" rel="stylesheet" />
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <link rel="stylesheet" type="text/css"
-        href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css"
+    />
     <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css" type="text/css"
-        crossorigin="">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css"
+      type="text/css"
+      crossorigin=""
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js" crossorigin=""></script>
     <style>
-        #mapid {
-            width: 100%;
-            height: 512px;
-            border: 1px solid #ccc;
-        }
+      #mapid {
+        width: 100%;
+        height: 512px;
+        border: 1px solid #ccc;
+      }
 
-        .leaflet-container {
-            background: #fff;
-        }
+      .leaflet-container {
+        background: #fff;
+      }
     </style>
     <script>
-        window.addEventListener("load", function () {
-            window.cookieconsent.initialise({
-                "palette": {
-                    "popup": {
-                        "background": "#edeff5",
-                        "text": "#838391"
-                    },
-                    "button": {
-                        "background": "#4b81e8"
-                    }
-                },
-                "position": "bottom-right",
-                "content": {
-                    "message": "Diese Webseite verwendet Cookies. Wenn Sie die Seite weiter nutzen, gehen wir von Ihrem Einverständnis aus.",
-                    "dismiss": "Verstanden",
-                    "link": "Mehr erfahren"
-                }
-            })
+      window.addEventListener('load', function () {
+        window.cookieconsent.initialise({
+          palette: {
+            popup: {
+              background: '#edeff5',
+              text: '#838391',
+            },
+            button: {
+              background: '#4b81e8',
+            },
+          },
+          position: 'bottom-right',
+          content: {
+            message:
+              'Diese Webseite verwendet Cookies. Wenn Sie die Seite weiter nutzen, gehen wir von Ihrem Einverständnis aus.',
+            dismiss: 'Verstanden',
+            link: 'Mehr erfahren',
+          },
         });
+      });
     </script>
     <script type="text/javascript">
-        function init() {
-            // create map and set center and zoom level
-            var map = new L.map('mapid');
-            map.setView([53.76845, 7.74341], 12);
-            var mapboxTileUrl = 'https://api.mapbox.com/styles/v1/haus-lanteern/ckn0mnvrb1a6217p01fij99du/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiaGF1cy1sYW50ZWVybiIsImEiOiJja24wbWw3eHEwcDE2MnVvMzlsaDk5emRiIn0.eiaXxcfJz8XWUQCp2n2WMQ';
-            L.tileLayer(mapboxTileUrl, {
-                attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> | &copy; <a href="https://www.mapbox.com/about/maps/">MapBox</a>'
-            }).addTo(map);
-            var marker = L.marker([53.771979212144196, 7.702289183087967], { fillColor: '#0088aa' }).addTo(map);
-            marker.bindPopup("Haus Lanteern").openPopup();
-        }
+      function init() {
+        // create map and set center and zoom level
+        var map = new L.map('mapid');
+        map.setView([53.76845, 7.74341], 12);
+        var mapboxTileUrl =
+          'https://api.mapbox.com/styles/v1/haus-lanteern/ckn0mnvrb1a6217p01fij99du/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiaGF1cy1sYW50ZWVybiIsImEiOiJja24wbWw3eHEwcDE2MnVvMzlsaDk5emRiIn0.eiaXxcfJz8XWUQCp2n2WMQ';
+        L.tileLayer(mapboxTileUrl, {
+          attribution:
+            '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> | &copy; <a href="https://www.mapbox.com/about/maps/">MapBox</a>',
+        }).addTo(map);
+        var marker = L.marker([53.771979212144196, 7.702289183087967], { fillColor: '#0088aa' }).addTo(map);
+        marker.bindPopup('Haus Lanteern').openPopup();
+      }
     </script>
-</head>
+  </head>
 
-<body data-spy="scroll" data-offset="73" onload="init()">
-
+  <body data-spy="scroll" data-offset="73" onload="init()">
     <nav id="nav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Navigationsmenü</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand logo" href="/">Haus Lanteern</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="#haus">Haus</a></li>
-                    <li><a href="#saunahaus">Saunahaus</a></li>
-                    <li><a href="#ausstattung">Ausstattung</a></li>
-                    <li><a href="#fotos">Fotos</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right" id="menu">
-                    <li><a href="#preise">Preise</a></li>
-                    <li><a href="#belegung">Belegung</a></li>
-                    <li><a href="#kontakt">Kontakt</a></li>
-                </ul>
-            </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#navbar"
+            aria-expanded="false"
+            aria-controls="navbar"
+          >
+            <span class="sr-only">Navigationsmenü</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand logo" href="/">Haus Lanteern</a>
         </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#haus">Haus</a></li>
+            <li><a href="#saunahaus">Saunahaus</a></li>
+            <li><a href="#ausstattung">Ausstattung</a></li>
+            <li><a href="#fotos">Fotos</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right" id="menu">
+            <li><a href="#preise">Preise</a></li>
+            <li><a href="#belegung">Belegung</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+          </ul>
+        </div>
+      </div>
     </nav>
 
     <section id="willkommen" class="Wallop Wallop--fade">
-        <div id="Wallop-list">
-            <div class="Wallop-item bg-image" style="background-image: url('assets/img/hauslanteern_terasse.jpg')">
-            </div>
-            <div class="Wallop-item bg-image" style="background-image: url('assets/img/hauslanteern_06.jpg')"></div>
-            <div class="Wallop-item bg-image" style="background-image: url('assets/img/hauslanteern_04.jpg')"></div>
-            <div class="Wallop-item bg-image" style="background-image: url('assets/img/hauslanteern_09.jpg')"></div>
-            <div class="Wallop-item bg-image" style="background-image: url('assets/img/hauslanteern_treppenhaus.jpg')">
-            </div>
-            <div class="Wallop-item bg-image" style="background-image: url('assets/img/hauslanteern_17.jpg')"></div>
-            <div class="Wallop-item bg-image" style="background-image: url('assets/img/hauslanteern_13.jpg')"></div>
-            <div class="Wallop-item bg-image" style="background-image: url('assets/img/hauslanteern_14.jpg')"></div>
-            <div class="Wallop-item bg-image" style="background-image: url('assets/img/hauslanteern_20.jpg')"></div>
-        </div>
+      <div id="Wallop-list">
+        <div class="Wallop-item bg-image" style="background-image: url('assets/img/hauslanteern_terasse.jpg')"></div>
+        <div class="Wallop-item bg-image" style="background-image: url('assets/img/hauslanteern_06.jpg')"></div>
+        <div class="Wallop-item bg-image" style="background-image: url('assets/img/hauslanteern_04.jpg')"></div>
+        <div class="Wallop-item bg-image" style="background-image: url('assets/img/hauslanteern_09.jpg')"></div>
+        <div
+          class="Wallop-item bg-image"
+          style="background-image: url('assets/img/hauslanteern_treppenhaus.jpg')"
+        ></div>
+        <div class="Wallop-item bg-image" style="background-image: url('assets/img/hauslanteern_17.jpg')"></div>
+        <div class="Wallop-item bg-image" style="background-image: url('assets/img/hauslanteern_13.jpg')"></div>
+        <div class="Wallop-item bg-image" style="background-image: url('assets/img/hauslanteern_14.jpg')"></div>
+        <div class="Wallop-item bg-image" style="background-image: url('assets/img/hauslanteern_20.jpg')"></div>
+      </div>
     </section>
 
     <section id="haus">
-        <div class="container">
-            <div class="row mb20">
-                <div class="col-md-12 text-center">
-                    <h2>Das Haus</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-offset-2 col-md-3">
-                    <img class="img-responsive center-block mb20" width="241" height="360"
-                        src="assets/img/hauslanteern_impression_01.jpg">
-                </div>
-                <div class="col-md-5">
-                    <p>Willkommen im Haus Lanteern, einem alleinstehenden Ferienhaus mit erstklassiger Ausstattung für
-                        gehobene Ansprüche.</p>
-                    <p>Urlaub beginnt mit dem Wohlgefühl in den eigenen vier Wänden. In unserem Haus fühlen Sie sich
-                        sofort
-                        zu Hause auf Spiekeroog, mitten im UNESCO-Weltnaturerbe Wattenmeer.</p>
-                    <p>Die liebevolle moderne Einrichtung mit friesischem Flair und einer Brise New England bietet
-                        alles,
-                        was Sie für einen unvergesslichen Urlaub benötigen.</p>
-                </div>
-            </div>
-            <div class="row mb20">
-                <div class="col-md-offset-2 col-md-8">
-                    <p>Seit über 100 Jahren verbringt unsere Familie die schönsten Wochen des Jahres auf der Insel, mit
-                        nur
-                        einem Ziel: Spiekeroog genießen.</p>
-                    <img class="img-responsive center-block mt20 mb20" width="480" height="271"
-                        src="assets/img/collage.jpg">
-                    <p>Diese Tradition setzen wir mit Haus Lanteern fort. Und zwar zu jeder Jahreszeit.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-offset-2 col-md-5">
-                    <p>Im Sommer beim Entspannen auf unserer großzügigen Terrasse, im Winter beim Teetrinken in unserem
-                        lichtdurchfluteten offenen Wohnraum oder mit einem Grog vor dem Gaskaminofen.</p>
-                    <p>Bei schlechtem Wetter sorgen Bücher, Gesellschaftsspiele und DVDs für Kurzweil und unser
-                        separates
-                        Saunahaus zu Ihrer alleinigen Nutzung für Entspannung.</p>
-                </div>
-                <div class="col-md-3">
-                    <img class="img-responsive center-block mb20" width="241" height="360"
-                        src="assets/img/hauslanteern_impression_03.jpg">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-offset-2 col-md-8">
-                    <p>Das Haus liegt im ruhigen Ostende des Dorfes und ist damit der ideale Ausgangspunkt für
-                        ausgedehnte Strandspaziergänge. Der Fußweg durch die Dünen führt in 10min zum Badestrand;
-                        gleichzeitig ist der Dorfkern mit seinen Cafés, Restaurants und Geschäften in 5min zu erreichen.
-                    </p>
-                    <div id="mapid"></div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="row mb20">
+          <div class="col-md-12 text-center">
+            <h2>Das Haus</h2>
+          </div>
         </div>
+        <div class="row">
+          <div class="col-md-offset-2 col-md-3">
+            <img
+              class="img-responsive center-block mb20"
+              width="241"
+              height="360"
+              src="assets/img/hauslanteern_impression_01.jpg"
+            />
+          </div>
+          <div class="col-md-5">
+            <p>
+              Willkommen im Haus Lanteern, einem alleinstehenden Ferienhaus mit erstklassiger Ausstattung für gehobene
+              Ansprüche.
+            </p>
+            <p>
+              Urlaub beginnt mit dem Wohlgefühl in den eigenen vier Wänden. In unserem Haus fühlen Sie sich sofort zu
+              Hause auf Spiekeroog, mitten im UNESCO-Weltnaturerbe Wattenmeer.
+            </p>
+            <p>
+              Die liebevolle moderne Einrichtung mit friesischem Flair und einer Brise New England bietet alles, was Sie
+              für einen unvergesslichen Urlaub benötigen.
+            </p>
+          </div>
+        </div>
+        <div class="row mb20">
+          <div class="col-md-offset-2 col-md-8">
+            <p>
+              Seit über 100 Jahren verbringt unsere Familie die schönsten Wochen des Jahres auf der Insel, mit nur einem
+              Ziel: Spiekeroog genießen.
+            </p>
+            <img class="img-responsive center-block mt20 mb20" width="480" height="271" src="assets/img/collage.jpg" />
+            <p>Diese Tradition setzen wir mit Haus Lanteern fort. Und zwar zu jeder Jahreszeit.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-offset-2 col-md-5">
+            <p>
+              Im Sommer beim Entspannen auf unserer großzügigen Terrasse, im Winter beim Teetrinken in unserem
+              lichtdurchfluteten offenen Wohnraum.
+            </p>
+            <p>
+              Bei schlechtem Wetter sorgen Bücher, Gesellschaftsspiele und DVDs für Kurzweil und unser separates
+              Saunahaus zu Ihrer alleinigen Nutzung für Entspannung.
+            </p>
+          </div>
+          <div class="col-md-3">
+            <img
+              class="img-responsive center-block mb20"
+              width="241"
+              height="360"
+              src="assets/img/hauslanteern_impression_03.jpg"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-offset-2 col-md-8">
+            <p>
+              Das Haus liegt im ruhigen Ostende des Dorfes und ist damit der ideale Ausgangspunkt für ausgedehnte
+              Strandspaziergänge. Der Fußweg durch die Dünen führt in 10min zum Badestrand; gleichzeitig ist der
+              Dorfkern mit seinen Cafés, Restaurants und Geschäften in 5min zu erreichen.
+            </p>
+            <div id="mapid"></div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="saunahaus" class="mt20">
-        <div class="container">
-            <div class="row mb20">
-                <div class="col-md-12 text-center">
-                    <h2>Das Saunahaus</h2>
-                </div>
-            </div>
-            <div class="row mb20">
-                <div class="col-md-offset-2 col-md-8">
-                    <p>Erholung ist erst vollkommen, wenn man nach einem langen Strandspaziergang durch Nordseewind und
-                        Wetter in der Sauna neue Energie tanken kann. Das separate Saunahaus mit Tageslicht steht Ihnen
-                        rund um die Uhr zu Ihrer alleinigen Nutzung zur Verfügung.</p>
-                    <img class="img-responsive center-block mt20 mb20" width="480" height="332"
-                        src="assets/img/saunahaus.jpg">
-                </div>
-            </div>
+      <div class="container">
+        <div class="row mb20">
+          <div class="col-md-12 text-center">
+            <h2>Das Saunahaus</h2>
+          </div>
         </div>
+        <div class="row mb20">
+          <div class="col-md-offset-2 col-md-8">
+            <p>
+              Erholung ist erst vollkommen, wenn man nach einem langen Strandspaziergang durch Nordseewind und Wetter in
+              der Sauna neue Energie tanken kann. Das separate Saunahaus mit Tageslicht steht Ihnen rund um die Uhr zu
+              Ihrer alleinigen Nutzung zur Verfügung.
+            </p>
+            <img
+              class="img-responsive center-block mt20 mb20"
+              width="480"
+              height="332"
+              src="assets/img/saunahaus.jpg"
+            />
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="ausstattung" class="mt20">
-        <div class="container">
-            <div class="row mb20">
-                <div class="col-md-12 text-center">
-                    <h2>Ausstattung</h2>
-                </div>
-            </div>
-            <div class="row mb20">
-                <div class="col-md-offset-2 col-md-8">
-                    <p>Das alleinstehende Haus bietet ca. 75m² Wohnfläche für bis zu 4 Personen. Mit Rücksicht auf
-                        Allergiker nehmen wir in unserem Nichtraucherhaus keine Haustiere auf.</p>
-                    <img class="img-responsive center-block mt20 mb20" width="480" height="224"
-                        src="assets/img/haus_lanteern_baeder.jpg">
-                    <p><b>Erdgeschoss:</b></p>
-                    <ul>
-                        <li>Wohn-, Ess- und Küchenbereich mit Eichendielen als Bodenbelag</li>
-                        <li>Sitzlandschaft im Erker</li>
-                        <li>Hochwertige Einbauküche mit Ceranfeldherd, Backofen, Mikrowelle, Geschirrspüler, Spüle,
-                            Kühlschrank mit Tiefkühlfach
-                        </li>
-                        <li>Kaffeemaschine, Espressokocher, Wasserkocher, Toaster, Handrührgerät</li>
-                        <li>Gasbetriebener Kaminofen im offenen Wohnzimmer</li>
-                        <li>WLAN, Flachbildfernseher, Kabel-TV, Blu-ray/DVD-Spieler, CD-Radio-MP3 Musikanlage, Bücher,
-                            DVDs,
-                            Gesellschaftsspiele
-                        </li>
-                        <li>Bad mit Regendusche, Waschtisch, Fön und WC</li>
-                        <li>Bettwäsche und Hand-/Saunatücher inklusive</li>
-                        <li>Waschtrockner (im Saunahaus)</li>
-                        <li>Kinderhochstuhl und Kinderreisebett verfügbar</li>
-                    </ul>
-                    <img class="img-responsive center-block mt20 mb20" width="480" height="330"
-                        src="assets/img/haus_lanteern_02.jpg">
-                    <p><b>Außenbereich:</b></p>
-                    <ul>
-                        <li>Großzügige Terrasse mit Teakholzgartenmöbeln</li>
-                        <li>Separates Saunahaus zur alleinigen Nutzung</li>
-                    </ul>
-                    <img class="img-responsive center-block mt20 mb20" width="480" height="321"
-                        src="assets/img/haus_lanteern_aussenbereich.jpg">
-                    <p><b>Dachgeschoss:</b></p>
-                    <ul>
-                        <li>Eichendielen als Bodenbelag</li>
-                        <li>Schlafzimmer mit Doppelbett</li>
-                        <li>Schlafzimmer mit zwei Einzelbetten</li>
-                        <li>Maritimes Studio mit Schreibtisch und einer Koje</li>
-                        <li>Separates WC</li>
-                    </ul>
-                    <img class="img-responsive center-block mt20 mb20" width="480" height="330"
-                        src="assets/img/haus_lanteern_03.jpg">
-                </div>
-            </div>
+      <div class="container">
+        <div class="row mb20">
+          <div class="col-md-12 text-center">
+            <h2>Ausstattung</h2>
+          </div>
         </div>
+        <div class="row mb20">
+          <div class="col-md-offset-2 col-md-8">
+            <p>
+              Das alleinstehende Haus bietet ca. 75m² Wohnfläche für bis zu 4 Personen. Mit Rücksicht auf Allergiker
+              nehmen wir in unserem Nichtraucherhaus keine Haustiere auf.
+            </p>
+            <img
+              class="img-responsive center-block mt20 mb20"
+              width="480"
+              height="224"
+              src="assets/img/haus_lanteern_baeder.jpg"
+            />
+            <p><b>Erdgeschoss:</b></p>
+            <ul>
+              <li>Wohn-, Ess- und Küchenbereich mit Eichendielen als Bodenbelag</li>
+              <li>Sitzlandschaft im Erker</li>
+              <li>
+                Hochwertige Einbauküche mit Ceranfeldherd, Backofen, Mikrowelle, Geschirrspüler, Spüle, Kühlschrank mit
+                Tiefkühlfach
+              </li>
+              <li>Kaffeemaschine, Espressokocher, Wasserkocher, Toaster, Handrührgerät</li>
+              <li>
+                WLAN, Flachbildfernseher, Kabel-TV, Blu-ray/DVD-Spieler, CD-Radio-MP3 Musikanlage, Bücher, DVDs,
+                Gesellschaftsspiele
+              </li>
+              <li>Bad mit Regendusche, Waschtisch, Fön und WC</li>
+              <li>Bettwäsche und Hand-/Saunatücher inklusive</li>
+              <li>Waschtrockner (im Saunahaus)</li>
+              <li>Kinderhochstuhl und Kinderreisebett verfügbar</li>
+            </ul>
+            <img
+              class="img-responsive center-block mt20 mb20"
+              width="480"
+              height="330"
+              src="assets/img/haus_lanteern_02.jpg"
+            />
+            <p><b>Außenbereich:</b></p>
+            <ul>
+              <li>Großzügige Terrasse mit Teakholzgartenmöbeln</li>
+              <li>Separates Saunahaus zur alleinigen Nutzung</li>
+            </ul>
+            <img
+              class="img-responsive center-block mt20 mb20"
+              width="480"
+              height="321"
+              src="assets/img/haus_lanteern_aussenbereich.jpg"
+            />
+            <p><b>Dachgeschoss:</b></p>
+            <ul>
+              <li>Eichendielen als Bodenbelag</li>
+              <li>Schlafzimmer mit Doppelbett</li>
+              <li>Schlafzimmer mit zwei Einzelbetten</li>
+              <li>Maritimes Studio mit Schreibtisch und einer Koje</li>
+              <li>Separates WC</li>
+            </ul>
+            <img
+              class="img-responsive center-block mt20 mb20"
+              width="480"
+              height="330"
+              src="assets/img/haus_lanteern_03.jpg"
+            />
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="fotos" class="mt20">
-        <div class="container">
-            <div class="row mb20">
-                <div class="col-md-12 text-center">
-                    <h2>Fotos</h2>
-                </div>
-            </div>
-            <div class="row mb20">
-                <div class="col-md-offset-3 col-md-6">
-                    <div id="gallery" class="text-center">
-                        <a href="assets/img/hauslanteern_01.jpg"><img src="assets/img/thumbnails/hauslanteern_01.jpg"
-                                width="120" height="80" alt="Haus Lanteern auf Spiekeroog" /></a>
-                        <a href="assets/img/hauslanteern_02.jpg"><img src="assets/img/thumbnails/hauslanteern_02.jpg"
-                                width="120" height="80" alt="Haus Lanteern auf Spiekeroog" /></a>
-                        <a href="assets/img/hauslanteern_03.jpg"><img src="assets/img/thumbnails/hauslanteern_03.jpg"
-                                width="120" height="80" alt="Haus Lanteern auf Spiekeroog" /></a>
-                        <a href="assets/img/hauslanteern_04.jpg"><img src="assets/img/thumbnails/hauslanteern_04.jpg"
-                                width="120" height="80" alt="Haus Lanteern auf Spiekeroog" /></a>
-                        <a href="assets/img/hauslanteern_05.jpg"><img src="assets/img/thumbnails/hauslanteern_05.jpg"
-                                width="120" height="80" alt="Haus Lanteern auf Spiekeroog" /></a>
-                        <a href="assets/img/hauslanteern_06.jpg"><img src="assets/img/thumbnails/hauslanteern_06.jpg"
-                                width="120" height="80" alt="Haus Lanteern auf Spiekeroog" /></a>
-                        <a href="assets/img/hauslanteern_07.jpg"><img src="assets/img/thumbnails/hauslanteern_07.jpg"
-                                width="120" height="80" alt="Haus Lanteern auf Spiekeroog" /></a>
-                        <a href="assets/img/hauslanteern_08.jpg"><img src="assets/img/thumbnails/hauslanteern_08.jpg"
-                                width="120" height="80" alt="Haus Lanteern auf Spiekeroog" /></a>
-                        <a href="assets/img/hauslanteern_09.jpg"><img src="assets/img/thumbnails/hauslanteern_09.jpg"
-                                width="120" height="80" alt="Haus Lanteern auf Spiekeroog" /></a>
-                        <a href="assets/img/hauslanteern_10.jpg"><img src="assets/img/thumbnails/hauslanteern_10.jpg"
-                                width="120" height="80" alt="Haus Lanteern auf Spiekeroog" /></a>
-                        <a href="assets/img/hauslanteern_11.jpg"><img src="assets/img/thumbnails/hauslanteern_11.jpg"
-                                width="120" height="80" alt="Haus Lanteern auf Spiekeroog" /></a>
-                        <a href="assets/img/hauslanteern_12.jpg"><img src="assets/img/thumbnails/hauslanteern_12.jpg"
-                                width="120" height="80" alt="Haus Lanteern auf Spiekeroog" /></a>
-                        <a href="assets/img/hauslanteern_13.jpg"><img src="assets/img/thumbnails/hauslanteern_13.jpg"
-                                width="120" height="80" alt="Haus Lanteern auf Spiekeroog" /></a>
-                        <a href="assets/img/hauslanteern_14.jpg"><img src="assets/img/thumbnails/hauslanteern_14.jpg"
-                                width="120" height="80" alt="Haus Lanteern auf Spiekeroog" /></a>
-                        <a href="assets/img/hauslanteern_15.jpg"><img src="assets/img/thumbnails/hauslanteern_15.jpg"
-                                width="120" height="80" alt="Haus Lanteern auf Spiekeroog" /></a>
-                        <a href="assets/img/hauslanteern_16.jpg"><img src="assets/img/thumbnails/hauslanteern_16.jpg"
-                                width="120" height="80" alt="Haus Lanteern auf Spiekeroog" /></a>
-                        <a href="assets/img/hauslanteern_17.jpg"><img src="assets/img/thumbnails/hauslanteern_17.jpg"
-                                width="120" height="80" alt="Haus Lanteern auf Spiekeroog" /></a>
-                        <a href="assets/img/hauslanteern_18.jpg"><img src="assets/img/thumbnails/hauslanteern_18.jpg"
-                                width="120" height="80" alt="Haus Lanteern auf Spiekeroog" /></a>
-                        <a href="assets/img/hauslanteern_19.jpg"><img src="assets/img/thumbnails/hauslanteern_19.jpg"
-                                width="120" height="80" alt="Haus Lanteern auf Spiekeroog" /></a>
-                        <a href="assets/img/hauslanteern_20.jpg"><img src="assets/img/thumbnails/hauslanteern_20.jpg"
-                                width="120" height="80" alt="Haus Lanteern auf Spiekeroog" /></a>
-                    </div>
-                    <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
-                        <div class="slides"></div>
-                        <a class="prev">‹</a>
-                        <a class="next">›</a>
-                        <a class="close">×</a>
-                        <a class="play-pause"></a>
-                        <ol class="indicator"></ol>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="row mb20">
+          <div class="col-md-12 text-center">
+            <h2>Fotos</h2>
+          </div>
         </div>
+        <div class="row mb20">
+          <div class="col-md-offset-3 col-md-6">
+            <div id="gallery" class="text-center">
+              <a href="assets/img/hauslanteern_01.jpg"
+                ><img
+                  src="assets/img/thumbnails/hauslanteern_01.jpg"
+                  width="120"
+                  height="80"
+                  alt="Haus Lanteern auf Spiekeroog"
+              /></a>
+              <a href="assets/img/hauslanteern_02.jpg"
+                ><img
+                  src="assets/img/thumbnails/hauslanteern_02.jpg"
+                  width="120"
+                  height="80"
+                  alt="Haus Lanteern auf Spiekeroog"
+              /></a>
+              <a href="assets/img/hauslanteern_03.jpg"
+                ><img
+                  src="assets/img/thumbnails/hauslanteern_03.jpg"
+                  width="120"
+                  height="80"
+                  alt="Haus Lanteern auf Spiekeroog"
+              /></a>
+              <a href="assets/img/hauslanteern_04.jpg"
+                ><img
+                  src="assets/img/thumbnails/hauslanteern_04.jpg"
+                  width="120"
+                  height="80"
+                  alt="Haus Lanteern auf Spiekeroog"
+              /></a>
+              <a href="assets/img/hauslanteern_06.jpg"
+                ><img
+                  src="assets/img/thumbnails/hauslanteern_06.jpg"
+                  width="120"
+                  height="80"
+                  alt="Haus Lanteern auf Spiekeroog"
+              /></a>
+              <a href="assets/img/hauslanteern_07.jpg"
+                ><img
+                  src="assets/img/thumbnails/hauslanteern_07.jpg"
+                  width="120"
+                  height="80"
+                  alt="Haus Lanteern auf Spiekeroog"
+              /></a>
+              <a href="assets/img/hauslanteern_08.jpg"
+                ><img
+                  src="assets/img/thumbnails/hauslanteern_08.jpg"
+                  width="120"
+                  height="80"
+                  alt="Haus Lanteern auf Spiekeroog"
+              /></a>
+              <a href="assets/img/hauslanteern_09.jpg"
+                ><img
+                  src="assets/img/thumbnails/hauslanteern_09.jpg"
+                  width="120"
+                  height="80"
+                  alt="Haus Lanteern auf Spiekeroog"
+              /></a>
+              <a href="assets/img/hauslanteern_10.jpg"
+                ><img
+                  src="assets/img/thumbnails/hauslanteern_10.jpg"
+                  width="120"
+                  height="80"
+                  alt="Haus Lanteern auf Spiekeroog"
+              /></a>
+              <a href="assets/img/hauslanteern_11.jpg"
+                ><img
+                  src="assets/img/thumbnails/hauslanteern_11.jpg"
+                  width="120"
+                  height="80"
+                  alt="Haus Lanteern auf Spiekeroog"
+              /></a>
+              <a href="assets/img/hauslanteern_12.jpg"
+                ><img
+                  src="assets/img/thumbnails/hauslanteern_12.jpg"
+                  width="120"
+                  height="80"
+                  alt="Haus Lanteern auf Spiekeroog"
+              /></a>
+              <a href="assets/img/hauslanteern_13.jpg"
+                ><img
+                  src="assets/img/thumbnails/hauslanteern_13.jpg"
+                  width="120"
+                  height="80"
+                  alt="Haus Lanteern auf Spiekeroog"
+              /></a>
+              <a href="assets/img/hauslanteern_14.jpg"
+                ><img
+                  src="assets/img/thumbnails/hauslanteern_14.jpg"
+                  width="120"
+                  height="80"
+                  alt="Haus Lanteern auf Spiekeroog"
+              /></a>
+              <a href="assets/img/hauslanteern_15.jpg"
+                ><img
+                  src="assets/img/thumbnails/hauslanteern_15.jpg"
+                  width="120"
+                  height="80"
+                  alt="Haus Lanteern auf Spiekeroog"
+              /></a>
+              <a href="assets/img/hauslanteern_16.jpg"
+                ><img
+                  src="assets/img/thumbnails/hauslanteern_16.jpg"
+                  width="120"
+                  height="80"
+                  alt="Haus Lanteern auf Spiekeroog"
+              /></a>
+              <a href="assets/img/hauslanteern_17.jpg"
+                ><img
+                  src="assets/img/thumbnails/hauslanteern_17.jpg"
+                  width="120"
+                  height="80"
+                  alt="Haus Lanteern auf Spiekeroog"
+              /></a>
+              <a href="assets/img/hauslanteern_18.jpg"
+                ><img
+                  src="assets/img/thumbnails/hauslanteern_18.jpg"
+                  width="120"
+                  height="80"
+                  alt="Haus Lanteern auf Spiekeroog"
+              /></a>
+              <a href="assets/img/hauslanteern_19.jpg"
+                ><img
+                  src="assets/img/thumbnails/hauslanteern_19.jpg"
+                  width="120"
+                  height="80"
+                  alt="Haus Lanteern auf Spiekeroog"
+              /></a>
+              <a href="assets/img/hauslanteern_20.jpg"
+                ><img
+                  src="assets/img/thumbnails/hauslanteern_20.jpg"
+                  width="120"
+                  height="80"
+                  alt="Haus Lanteern auf Spiekeroog"
+              /></a>
+            </div>
+            <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+              <div class="slides"></div>
+              <a class="prev">‹</a>
+              <a class="next">›</a>
+              <a class="close">×</a>
+              <a class="play-pause"></a>
+              <ol class="indicator"></ol>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="preise" class="mt20">
-        <div class="container">
-            <div class="row mb20">
-                <div class="col-md-12 text-center">
-                    <h2>Preise</h2>
-                </div>
-            </div>
-            <div class="row mb20">
-                <div class="col-md-offset-2 col-md-8">
-                    <p>Die Mindestmietzeit beträgt 7 Nächte. Die Kosten für die Endreinigung betragen 120&euro;.</p>
-                </div>
-            </div>
-            <div class="row mb20">
-                <div class="col-md-offset-2 col-md-3">
-                    <img class="img-responsive center-block mb20" width="241" height="360"
-                        src="assets/img/hauslanteern_impression_04.jpg">
-                </div>
-                <div class="col-md-5">
-                    <table class="table table-striped table-condensed">
-                        <thead>
-                            <tr>
-                                <th>Zeitraum</th>
-                                <th>Saison</th>
-                                <th>Preis</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>4. Sep. - 23. Okt.</td>
-                                <td>Nebensaison</td>
-                                <td>210&euro;</td>
-                            </tr>
-                            <tr>
-                                <td>23. Okt. - 18. Dez.</td>
-                                <td>Übrige Zeit</td>
-                                <td>180&euro;</td>
-                            </tr>
-                            <tr>
-                                <td>18. Dez. - 1. Jan. <i>'22</i></td>
-                                <td>Hauptsaison</td>
-                                <td>250&euro;</td>
-                            </tr>
-                            <tr>
-                                <td>1. Jan. - 8. Jan. <i>'22</i></td>
-                                <td>Hauptsaison</td>
-                                <td>260&euro;</td>
-                            </tr>
-                            <tr>
-                                <td>8. Jan. - 9. Apr. <i>'22</i></td>
-                                <td>Übrige Zeit</td>
-                                <td>190&euro;</td>
-                            </tr>
-                            <tr>
-                                <td>9. Apr. - 23. Apr. <i>'22</i></td>
-                                <td>Hauptsaison</td>
-                                <td>260&euro;</td>
-                            </tr>
-                            <tr>
-                                <td>23. Apr. - 25. Jun. <i>'22</i></td>
-                                <td>Nebensaison</td>
-                                <td>220&euro;</td>
-                            </tr>
-                            <tr>
-                                <td>25. Jun. - 10. Sep. <i>'22</i></td>
-                                <td>Hauptsaison</td>
-                                <td>260&euro;</td>
-                            </tr>
-                            <tr>
-                                <td>10. Sep. - 5. Nov. <i>'22</i></td>
-                                <td>Nebensaison</td>
-                                <td>220&euro;</td>
-                            </tr>
-                            <tr>
-                                <td>5. Nov. - 17. Dez. <i>'22</i></td>
-                                <td>Übrige Zeit</td>
-                                <td>190&euro;</td>
-                            </tr>
-                            <tr>
-                                <td>17. Dez. - 7. Jan. <i>'23</i></td>
-                                <td>Hauptsaison</td>
-                                <td>260&euro;</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+      <div class="container">
+        <div class="row mb20">
+          <div class="col-md-12 text-center">
+            <h2>Preise</h2>
+          </div>
         </div>
+        <div class="row mb20">
+          <div class="col-md-offset-2 col-md-8">
+            <p>Die Mindestmietzeit beträgt 7 Nächte. Die Kosten für die Endreinigung betragen 120&euro;.</p>
+          </div>
+        </div>
+        <div class="row mb20">
+          <div class="col-md-offset-2 col-md-3">
+            <img
+              class="img-responsive center-block mb20"
+              width="241"
+              height="360"
+              src="assets/img/hauslanteern_impression_04.jpg"
+            />
+          </div>
+          <div class="col-md-5">
+            <table class="table table-striped table-condensed">
+              <thead>
+                <tr>
+                  <th>Zeitraum</th>
+                  <th>Saison</th>
+                  <th>Preis</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>25. Jun. - 10. Sep.</td>
+                  <td>Hauptsaison</td>
+                  <td>260&euro;</td>
+                </tr>
+                <tr>
+                  <td>10. Sep. - 5. Nov.</td>
+                  <td>Nebensaison</td>
+                  <td>220&euro;</td>
+                </tr>
+                <tr>
+                  <td>5. Nov. - 17. Dez.</td>
+                  <td>Übrige Zeit</td>
+                  <td>190&euro;</td>
+                </tr>
+                <tr>
+                  <td>17. Dez. - 7. Jan. <i>'23</i></td>
+                  <td>Hauptsaison</td>
+                  <td>260&euro;</td>
+                </tr>
+                <tr>
+                  <td>7. Jan. - 1. Apr. <i>'23</i></td>
+                  <td>Übrige Zeit</td>
+                  <td>190&euro;</td>
+                </tr>
+                <tr>
+                  <td>1. Apr. - 15. Apr. <i>'23</i></td>
+                  <td>Hauptsaison</td>
+                  <td>270&euro;</td>
+                </tr>
+                <tr>
+                  <td>15. Apr. - 24. Jun. <i>'23</i></td>
+                  <td>Nebensaison</td>
+                  <td>220&euro;</td>
+                </tr>
+                <tr>
+                  <td>24. Jun. - 9. Sep. <i>'23</i></td>
+                  <td>Hauptsaison</td>
+                  <td>270&euro;</td>
+                </tr>
+                <tr>
+                  <td>9. Sep. - 4. Nov. <i>'23</i></td>
+                  <td>Nebensaison</td>
+                  <td>220&euro;</td>
+                </tr>
+                <tr>
+                  <td>4. Nov. - 16. Dez. <i>'23</i></td>
+                  <td>Übrige Zeit</td>
+                  <td>190&euro;</td>
+                </tr>
+                <tr>
+                  <td>16. Dez. - 6. Jan. <i>'24</i></td>
+                  <td>Hauptsaison</td>
+                  <td>270&euro;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="belegung">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h2>Belegung</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-offset-2 col-md-8 text-center">
-                    <iframe style="width: 100%; height: 220px; border: none;"
-                        src="https://www.spiekeroog-vermieter.de/de/freikalender.htm?mandObjID=482"></iframe>
-                </div>
-            </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h2>Belegung</h2>
+          </div>
         </div>
+        <div class="row">
+          <div class="col-md-offset-2 col-md-8 text-center">
+            <iframe
+              style="width: 100%; height: 220px; border: none"
+              src="https://www.spiekeroog-vermieter.de/de/freikalender.htm?mandObjID=482"
+            ></iframe>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="kontakt">
-        <div class="container">
-            <div class="row mb20">
-                <div class="col-md-12 text-center">
-                    <h2>Kontakt</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-offset-2 col-md-5">
-                    <p class="mb20">Wir freuen uns von Ihnen zu hören!</p>
-                    <p class="mb20">
-                        Per E-Mail:
-                        <script type="text/javascript">document.write("<n uers=\"znvygb:snzvyvr.xynfvat@unhf-ynagrrea.qr\" ery=\"absbyybj\">".replace(/[a-zA-Z]/g, function (c) {
-                                return String.fromCharCode((c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26);
-                            }));</script>
-                        <span class="codedirection">ed.nreetnal-suah@gnisalk.eilimaf</span>
-                        <script type="text/javascript">document.write("</a>");</script>
-                        <br />
-                        Per Telefon: 0176 55144715
-                    </p>
-                    <p>Ihre Familie Eckart Klasing</p>
-                </div>
-                <div class="col-md-3">
-                    <img class="img-responsive center-block mb20" width="241" height="360"
-                        src="assets/img/hauslanteern_impression_02.jpg">
-                </div>
-            </div>
+      <div class="container">
+        <div class="row mb20">
+          <div class="col-md-12 text-center">
+            <h2>Kontakt</h2>
+          </div>
         </div>
+        <div class="row">
+          <div class="col-md-offset-2 col-md-5">
+            <p class="mb20">Wir freuen uns von Ihnen zu hören!</p>
+            <p class="mb20">
+              Per E-Mail:
+              <script type="text/javascript">
+                document.write(
+                  '<n uers="znvygb:snzvyvr.xynfvat@unhf-ynagrrea.qr" ery="absbyybj">'.replace(
+                    /[a-zA-Z]/g,
+                    function (c) {
+                      return String.fromCharCode((c <= 'Z' ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26);
+                    }
+                  )
+                );
+              </script>
+              <span class="codedirection">ed.nreetnal-suah@gnisalk.eilimaf</span>
+              <script type="text/javascript">
+                document.write('</a>');
+              </script>
+              <br />
+              Per Telefon: 0176 55144715
+            </p>
+            <p>Ihre Familie Eckart Klasing</p>
+          </div>
+          <div class="col-md-3">
+            <img
+              class="img-responsive center-block mb20"
+              width="241"
+              height="360"
+              src="assets/img/hauslanteern_impression_02.jpg"
+            />
+          </div>
+        </div>
+      </div>
     </section>
 
     <footer id="footer">
-        <div class="container">
-            <div class="col-md-offset-2 col-md-8 text-center">
-                <p>&copy; 2018 Rugosa GbR &bull; <a href="impressum-datenschutz.html">Impressum &amp; Datenschutz</a>
-                </p>
-            </div>
+      <div class="container">
+        <div class="col-md-offset-2 col-md-8 text-center">
+          <p>&copy; 2018 Rugosa GbR &bull; <a href="impressum-datenschutz.html">Impressum &amp; Datenschutz</a></p>
         </div>
+      </div>
     </footer>
 
     <!-- Scripts -->
@@ -468,32 +638,32 @@
     <script src="assets/js/main.js"></script>
 
     <script>
-        var das = 'ga-disable-UA-46716688-1';
-        if (document.cookie.indexOf(das + '=true') > -1) window[das] = true;
-        function gaOptout() {
-            document.cookie = das + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
-            window[das] = true;
-        }
-        dataLayer = [];
+      var das = 'ga-disable-UA-46716688-1';
+      if (document.cookie.indexOf(das + '=true') > -1) window[das] = true;
+      function gaOptout() {
+        document.cookie = das + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+        window[das] = true;
+      }
+      dataLayer = [];
     </script>
     <script>
-        (function (i, s, o, g, r, a, m) {
-            if (location.hostname === "localhost") return;
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-        ga('create', 'UA-46716688-1', 'auto');
-        ga('set', 'anonymizeIp', true);
-        ga('send', 'pageview');
+      (function (i, s, o, g, r, a, m) {
+        if (location.hostname === 'localhost') return;
+        i['GoogleAnalyticsObject'] = r;
+        (i[r] =
+          i[r] ||
+          function () {
+            (i[r].q = i[r].q || []).push(arguments);
+          }),
+          (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+      ga('create', 'UA-46716688-1', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
     </script>
-
-</body>
-
+  </body>
 </html>
